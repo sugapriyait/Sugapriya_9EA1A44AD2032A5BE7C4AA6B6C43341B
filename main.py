@@ -1,13 +1,14 @@
-'''Write a function called linear_search_product that takes the list of products and a target product name as input. The function should perform a linear search to find the target product in the list and return a list of indices of all occurrences of the product if found, or an empty list if the product is not found.'''
-def linear_search_product(product_list, target_product):
-    indices = []
-    for index, product in enumerate(product_list):
-        if product == target_product:
-            indices.append(index)
-    return indices
+# Get the year from the user
+year = int(input("Enter a year: "))
 
-# Example usage:
-products = ["Apple", "Banana", "Orange", "Apple", "Grapes"]
-target = "Apple"
-result = linear_search_product(products, target)
-print(result)  # Output: [0, 3]
+# Check if it's a leap year
+if year % 4 == 0:
+    if year % 100 == 0:
+        if year % 400 == 0:
+            print(year, "is a leap year")
+        else:
+            print(year, "is not a leap year")
+    else:
+        print(year, "is a leap year")
+else:
+    print(year, "is not a leap year")
