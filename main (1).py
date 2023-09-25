@@ -1,54 +1,25 @@
-
-class Player:
-    def __init__(self, name, age, skills, style=None):
+'''Implement a function called sort_students that takes a list of student objects as input and sorts the list based on their CGPA (Cumulative Grade Point Average) in descending order. Each student object has the following attributes: name (string), roll_number (string), and cgpa (float). Test the function with different input lists of students.'''
+class Student:
+    def __init__(self, name, roll_number, cgpa):
         self.name = name
-        self.age = age
-        self.skills = skills
-        self.style = style
+        self.roll_number = roll_number
+        self.cgpa = cgpa
 
-    def __str__(self):
-        return f"{self.name} {self.age} {self.skills} {self.style or ''}"
+def sort_students(student_list):
+    # Sort the student list based on CGPA in descending order
+    sorted_students = sorted(student_list, key=lambda student: student.cgpa, reverse=True)
+    return sorted_students
 
+# Example usage:
+student1 = Student("Alice", "A123", 3.8)
+student2 = Student("Bob", "B456", 3.5)
+student3 = Student("Charlie", "C789", 3.9)
+student4 = Student("David", "D012", 3.7)
 
-class Team:
-    def __init__(self, name, players=None):
-        self.name = name
-        if players is not None:
-            self._players = list(players)
-        else:
-            self._players = []
+students = [student1, student2, student3, student4]
 
-    def add_player(self, obj):
-        if isinstance(obj, Player):
-            self._players.append(obj)
-        else:
-            print("Please provide player object")
+sorted_students = sort_students(students)
 
-    def __iter__(self):
-        return iter(self._players)
-
-    def __str__(self):
-        out = [f"Team name: {self.name}", "Players:"]
-        out.extend(str(player) for player in self)
-        return "\n".join(out)
-
-
-if __name__ == "__main__":
-
-    players = [Player("Mahendra", 46, "Wicket Kipper", "Right-Hand Batsman"),
-               Player("Sachin", 35, "Batsman", "Right-Hand Batsman"),
-               Player("Saurabh", 44, "Batsman", "Left-Hand Batsman"),
-               Player("Zahir", 38, "Bauwller", "Medium Pace Bauwller"),
-               Player("Yuvraj", 43, "All rounder")]
-
-    india = Team("India", players)
-    print(india)
-
-    # equivalent:
-    print("Team name:", india.name)
-    print("Players:")
-    for player in india:
-        print(player)
-
-
-
+# Print the sorted students
+for student in sorted_students:
+    print(f"Name: {student.name}, Roll Number: {student.roll_number}, CGPA: {student.cgpa}")
